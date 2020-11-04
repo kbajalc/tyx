@@ -166,9 +166,10 @@ export abstract class CoreServer {
 
       httpMethod: req.method as HttpMethod,
       resource,
+      model: undefined,
       path: req.path,
       pathParameters: req.params || {},
-      queryStringParameters: req.query || {},
+      queryStringParameters: req.query as any || {},
       headers: req.headers as Record<string, string> || {},
       body: req.body,
       buffer,
@@ -210,6 +211,7 @@ export abstract class CoreServer {
 
       httpMethod: ctx.method as HttpMethod,
       resource,
+      model: undefined,
       path: ctx.path,
       pathParameters: ctx.params,
       queryStringParameters: ctx.query,
